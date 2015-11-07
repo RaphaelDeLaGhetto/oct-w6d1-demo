@@ -47,5 +47,5 @@ bundle exec rake db:migrate
 Seed:
 
 ```
-
+bundle exec rake db:seed
 ```
