@@ -31,3 +31,21 @@ From your Cloud9 menu bar:
 ```
 Run > Run With > Sinatra
 ```
+
+# Set up sample database
+
+The base table migration is found in `db/migrate`. It creates the tables
+required to model a simple blog (i.e.: _users_, _posts_, _comments_, and
+_likes_).
+
+Migrate:
+
+```
+bundle exec rake db:migrate
+```
+
+Seed:
+
+```
+
+```
