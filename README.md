@@ -13,6 +13,7 @@ https://github.com/RaphaelDeLaGhetto/c9-sinatra-setup.git
 In `bash`:
 
 ```
+gem install bundler
 bundle install
 ```
 
