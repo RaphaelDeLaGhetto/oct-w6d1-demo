@@ -39,6 +39,12 @@ The base table migration is found in `db/migrate`. It creates the tables
 required to model a simple blog (i.e.: _users_, _posts_, _comments_, and
 _likes_).
 
+Create:
+
+```
+bundle exec rake db:create
+```
+
 Migrate:
 
 ```
