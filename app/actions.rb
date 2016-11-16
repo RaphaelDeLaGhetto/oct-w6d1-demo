@@ -20,6 +20,6 @@ get '/' do
       image: "/images/cabinets_and_scrap_wood.jpg",
       days_ago: 9
   } 
-  @caches = [press_board, metal_shelving, cabinets_and_scrap_wood].to_s
+  @caches = [press_board, metal_shelving, cabinets_and_scrap_wood]
   erb :index
 end
