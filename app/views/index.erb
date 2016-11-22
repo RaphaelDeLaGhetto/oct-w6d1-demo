@@ -2,6 +2,8 @@
   <article class="cache">
     <header>
       <h1><%= cache[:description] %></h1>
+      <h2><%= cache.get_freshness %></h2>
+      <h2>Posted <%= cache.days_ago %> days ago</h2>
     </header>
     <img src="<%= cache[:image] %>">
     <a href="http://google.com/maps/search/<%= cache[:coordinates] %>" target="_blank">
