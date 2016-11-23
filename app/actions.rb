@@ -1,26 +1,48 @@
 
 get '/' do
-#  press_board = {
-#    description: "Abandoned Press Board",
-#    coordinates: "51.1480255,-114.2352218611111",
-#    image: "/images/press_board.jpg",
-#    days_ago: 1
-#  }
-# 
-#  metal_shelving = {
-#    description: "Metal shelving and pipes",
-#    coordinates: "51.154060361111114,-114.16134641666667",
-#    image: "/images/metal_shelving.jpg",
-#    days_ago: 9
-#  }
-# 
-#  cabinets_and_scrap_wood = {
-#      description: "Cabinets and scrap wood",
-#      coordinates: "51.13459777777778,-114.15988158333333",
-#      image: "/images/cabinets_and_scrap_wood.jpg",
-#      days_ago: 9
-#  } 
-#  @caches = [press_board, metal_shelving, cabinets_and_scrap_wood]
-  @caches = Cache.all
+  @caches = Cache.order(created_at: :desc)
   erb :index
+end
+
+get '/new' do
+  @cache = Cache.new
+  erb :new
+end
+
+post '/cache' do
+  
+  @cache = Cache.new
+  
+  # Set description
+  @cache.description = params[:description]
+    
+  # Move file into storage
+  tempfile = params[:image][:tempfile] 
+  filename = params[:image][:filename] 
+  filepath = "uploads/#{filename}"
+  @cache.image = filepath
+  filepath = "public/#{filepath}"
+  FileUtils.cp(tempfile.path, filepath)
+  
+  # Calculate coords from EXIF rational numbers
+  # 2016-11-23 http://stackoverflow.com/questions/18244721/mapping-exif-data-to-long-lat
+  if EXIFR::JPEG.new(filepath).exif?
+    latitude = EXIFR::JPEG.new(filepath).gps_latitude[0].to_f +
+               EXIFR::JPEG.new(filepath).gps_latitude[1].to_f / 60 +
+               EXIFR::JPEG.new(filepath).gps_latitude[2].to_f / 3600
+    latitude *= -1 if EXIFR::JPEG.new(filepath).gps_latitude_ref == 'S'
+    longitude = EXIFR::JPEG.new(filepath).gps_longitude[0].to_f +
+                EXIFR::JPEG.new(filepath).gps_longitude[1].to_f / 60 +
+                EXIFR::JPEG.new(filepath).gps_longitude[2].to_f / 3600 
+    longitude *= -1 if EXIFR::JPEG.new(filepath).gps_longitude_ref == 'W'
+    coords = "#{latitude},#{longitude}"
+    
+    @cache.coordinates = coords
+  end
+    
+  if @cache.save
+    redirect '/'
+  else
+    erb :new
+  end
 end
