@@ -1,12 +1,12 @@
 
 get '/' do
-  @caches = Cache.order({ created_at: :desc })
+  @caches = Cache.order(created_at: :desc)
   erb :index
 end
 
 get '/new' do
   @cache = Cache.new
-  erb :new  
+  erb :new
 end
 
 post '/cache' do

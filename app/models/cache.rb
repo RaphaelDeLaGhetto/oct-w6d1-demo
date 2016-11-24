@@ -1,7 +1,7 @@
 class Cache < ActiveRecord::Base
    belongs_to :user
    
-   validates_presence_of :coordinates, message: "not reccorded in image"
+   validates_presence_of :coordinates, message: "not recorded in image"
    validates :description, presence: true
    validates :image, presence: true
     
