@@ -102,3 +102,9 @@ You can make sure the database has been added to the project like this:
 ```
 heroku config
 ```
+
+### Reset database
+
+```
+heroku pg:reset DATABASE
+```
