@@ -1,5 +1,9 @@
 class Cache < ActiveRecord::Base
-    belongs_to :user
+   belongs_to :user
+   
+   validates_presence_of :coordinates, message: "not reccorded in image"
+   validates :description, presence: true
+   validates :image, presence: true
     
    def days_ago
      (Time.now.to_date - self.created_at.to_date).to_i  
