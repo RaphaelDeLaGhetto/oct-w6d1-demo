@@ -106,5 +106,5 @@ heroku config
 ### Reset database
 
 ```
-heroku pg:reset DATABASE
+heroku pg:reset DATABASE --confirm recyclefreedom
 ```
