@@ -153,3 +153,11 @@ section h1 {
 main {
   width: 100%;   
 }
+
+#splash a {
+   color: orange; 
+   right: 1em;
+   top: 1em;
+   position: absolute;
+   text-decoration: none;
+}

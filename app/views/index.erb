@@ -1,4 +1,8 @@
-<a href="/new"><button>Post New Cache</button></a>
+<% if logged_in? %>
+  <a href="/new"><button>Post New Cache</button></a>
+<% else %>
+  <a href="/login"><button>Login</button></a>
+<% end %>
 
 <% @caches.each do |cache| %>
   <article class="cache">
