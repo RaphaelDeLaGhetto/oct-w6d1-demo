@@ -41,18 +41,24 @@ body {
     margin: 0;
 }
 
+.user, 
 .cache {
-    text-align: center;
     padding: 1em;
     margin: auto;
     width: 80%;
     position: relative;
 }
 
+.cache {
+  text-align: center;
+}
+}
+
 .cache img {
     width: 100%;
 }
 
+.user h1, 
 .cache h1 {
     color: #4f4f4f;
     font-size: 1.5em;
@@ -71,6 +77,7 @@ body {
 }
 
 @media (min-width: 750px) {
+    .user,
     .cache {
         width: 55%;
     }
@@ -84,6 +91,7 @@ body {
 }
 
 @media (min-width: 750px) {
+    .user,
     .cache {
         width: 55%;
     }
@@ -99,6 +107,7 @@ body {
     }
 }
 
+.user h2,
 .cache h2 {
   margin-top: 0;
   color: green;
@@ -160,4 +169,91 @@ main {
    top: 1em;
    position: absolute;
    text-decoration: none;
+}
+
+
+input {
+  font-size: 1.1em;
+}
+
+input,
+form-group {
+  display: block;
+  width: 100%;
+  margin-bottom: 1em;
+}
+
+form {
+  margin-left: 1em;
+  margin-right: 1em;
+}
+
+button,
+button[type="submit"] {
+    padding: 0.5em;
+    color: #FFF;
+    background: #1abc9c;
+    font-size: 1em;
+    text-align: center;
+    font-style: normal;
+    width: 100%;
+    border: 1px solid #16a085;
+    border-width: 1px 1px 3px;
+}
+
+section {
+    color: #4f4f4f;
+    font-size: 1.5em;
+    font-family: sans-serif;
+    width: 100%;
+}
+
+section h1 {
+    text-align: center;
+    margin-bottom: 0;
+}
+
+main {
+  width: 100%;   
+}
+
+#splash a {
+   color: orange; 
+   right: 1em;
+   top: 1em;
+   position: absolute;
+   text-decoration: none;
+}
+
+/** new (in addition to piggy backing on the .cache styles above **/
+
+h3 {
+  text-align: center;
+}
+
+.user p {
+  margin-top: 0;
+  font-size: 1.5em;
+  font-family: sans-serif;
+}
+
+a {
+   color: #71FF33;
+   text-decoration: none; 
+}
+
+input#delete:hover, 
+a:hover {
+   text-decoration: underline; 
+}
+
+input#delete {
+  color: #FF7133;
+  background:none;
+  border:none;
+  font-size: 1.5em;
+  font-family: sans-serif;
+  text-align: left;
+  padding: 0;
+  margin-left: -.7em;
 }

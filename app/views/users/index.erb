@@ -1,0 +1,14 @@
+<section>
+  <header>
+    <h1>Your fellow scavengers</h1>
+  </header>
+</section>
+<% @users.each do |user| %>
+  <article class="user">
+    <header>
+      <h1><a href="/users/<%= user.id %>"><%= user.name %></a></h1>
+      <h2><%= user.email %></h2>
+      <h2>Joined: <%= user.created_at %></h2>
+    </header>
+  </article>
+<% end %>

@@ -1,0 +1,24 @@
+<section>
+  <header>
+    <h1>Edit <%= @user.name %></h1>
+  </header>
+  <%= erb(:errors, { locals: {object: @user} } ) %>
+  <form action="/users/<%= @user.id %>" method="post">
+    <input type="hidden" name="_method" value="PUT">
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input type="text" name="user[name]" value="<%= @user.name %>">
+    </div>
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="text" name="user[email]" value="<%= @user.email %>">
+    </div>
+    <div class="form-group">
+      <label for="password">Password:</label>
+      <input type="password" name="user[password]">
+    </div>
+    <div class="form-group">
+      <button type="submit"> Update
+    </div>
+  </form>
+</section>

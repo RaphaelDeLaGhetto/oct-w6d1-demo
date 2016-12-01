@@ -1,6 +1,7 @@
 <section>
   <h1>Post new cache</h1>
   <div class="submit-form">
+    <%= erb(:errors, { locals: {object: @cache} } ) %>
     <ul class="errors">
       <% @cache.errors.full_messages.each do |msg| %>
          <li><%= msg %></li>

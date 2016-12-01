@@ -75,3 +75,58 @@ get '/logout' do
   session.clear
   redirect '/'
 end
+
+#
+# RESTful user API
+#
+
+# Shows all the users in the database
+get '/users/?' do
+  @users = User.all
+  erb(:'users/index')
+end
+
+# Get form for creating a new user
+get '/users/new' do
+  @user = User.new
+  erb(:'users/new')
+end
+
+# Actually create a new user
+post '/users' do
+  @user = User.new(params)
+  if @user.save
+    redirect('/users')
+  else
+    erb(:'users/new')
+  end
+end
+
+# Show me one user
+get '/users/:id' do
+  @user = User.find(params[:id])
+  erb(:'users/show')
+end
+
+# Edit a user
+get '/users/:id/edit' do
+  @user = User.find(params[:id])
+  erb(:'users/edit')
+end 
+
+# Update user
+put '/users/:id' do
+  @user = User.find(params[:id])
+  if @user.update(params[:user])
+    redirect("users/#{@user.id}")
+  else
+    erb(:'users/edit')
+  end
+end
+
+# Delete user
+delete '/users/:id' do
+  User.delete(params[:id])
+  redirect('/users')
+end
+
