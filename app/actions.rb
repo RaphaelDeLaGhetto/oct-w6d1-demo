@@ -4,6 +4,25 @@ helpers do
   end
 end
 
+
+#['/new', '/users', '/users/:id', /edit/].each do |path|
+['/new', '/users'].each do |path|
+  before path do
+    redirect('/login') if !logged_in? 
+  end
+end
+
+before  do
+  if request.path !~ /login/ &&
+     request.request_method == "POST" ||
+     request.request_method == "PUT" ||
+     request.request_method == "DELETE"
+    @ip = request.ip
+    halt(401, erb(:error_401)) unless logged_in? 
+  end
+end
+
+
 get '/' do
   @caches = Cache.order(created_at: :desc)
   erb :index

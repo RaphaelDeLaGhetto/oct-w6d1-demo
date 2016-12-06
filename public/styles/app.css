@@ -256,3 +256,17 @@ input#delete {
   padding: 0;
   margin-left: -.7em;
 }
+
+#error-pic {
+    background-image: url(https://pbs.twimg.com/profile_images/600750324609978370/J4T29OqA.jpg);    
+    height: 50vh;
+    color: grey;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+@media(min-width: 1024px) {
+    #error-pic {
+        background-image: url(http://northbaynow.ca/wp-content/uploads/2016/05/RCMP.jpg);    
+    }
+}
